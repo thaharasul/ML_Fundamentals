@@ -1,0 +1,6 @@
+{
+  "grad_check_rel_error": 1.3766431652664173e-10,
+  "final_train_loss": 0.006834028720680674,
+  "test_accuracy": 0.9755555555555555,
+  "test_macro_f1": 0.9754992502476625
+}
