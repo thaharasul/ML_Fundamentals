@@ -1,3 +1,8 @@
+## M1: Linear regression from scratch
+Folder `m1_linear_regression/`: NumPy gradient descent compared with scikit-learn on the Diabetes dataset (test MSE 2889.93 vs 2900.19).
+
+Run: `cd m1_linear_regression && python -m pytest && python -m src.compare`
+
 # Deep Learning Lab: Digits Classifier, NumPy vs PyTorch
 
 The same neural network built twice on the sklearn digits dataset (8x8 handwritten digits, 10 classes): once from scratch in NumPy with hand-written backpropagation, once in PyTorch with autograd. Both are compared on identical data.
