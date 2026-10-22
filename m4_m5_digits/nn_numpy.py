@@ -73,7 +73,16 @@ def load_data(seed=42):
     d = load_digits()
     X, y = d.data / 16.0, d.target
     return train_test_split(X, y, test_size=0.25, stratify=y, random_state=seed)
-
+def load_data_3way(seed=42):  # shared split used by BOTH M4 and M5: 60% train, 20% validation, 20% test
+    d = load_digits()  # 1797 images of handwritten digits, 8x8 pixels each
+    X, y = d.data / 16.0, d.target  # pixels range 0-16, so dividing by 16 scales them to 0-1
+    Xtr, Xtmp, ytr, ytmp = train_test_split(  # first split: 60% train, 40% held out
+        X, y, test_size=0.4, stratify=y, random_state=seed  # stratify keeps each digit's share equal
+    )
+    Xval, Xte, yval, yte = train_test_split(  # second split: halve the held-out part
+        Xtmp, ytmp, test_size=0.5, stratify=ytmp, random_state=seed  # 20% validation, 20% test
+    )
+    return Xtr, Xval, Xte, ytr, yval, yte  # hand back all six pieces
 
 def train(net, Xtr, ytr, epochs=100, lr=0.5, batch=64, seed=0):
     rng = np.random.default_rng(seed)
